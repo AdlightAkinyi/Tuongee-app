@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="post-display d-flex justify-content-center pt-5">
+    <div class="post-detail">
+        <div class="">
+            <div class="">
+                <h4 class="font-weight-bold">
+                    <a href="{{post.post_url}}">
+                    {{post.blog}}</a>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="post-detail-details">
+        <h5 class="font-weight-bold pt-1">
+            {% if user_profile.prof_pic %}
+            <span><img src="{{user.prof_pic.url}}" class="project-detail-profpic"></span>
+            {% else %}
+            {% load static %}
+            <span><img src="{% static 'css/assets/avatar.png' %}" class="post-detail-profpic"></span>
+            {% endif %}
+            <a href="{% url 'user_profile' post.owner.id %}">{{user.name}}</a>
+        </h5>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="float-right small">{{post.created_on}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="project-upload-form d-flex justify-content-center">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <p>{{post_form.title|as_crispy_field}}</p>
+                <p>{{post_form.blog|as_crispy_field}}</p>
+            </div>
+        </div>
+        <div class="text-center">
+            <input type="submit" name="Submit" value="SUBMIT" class="accounts-submit btn-primary" /><br>
+        </div>
+    </form>
+    {{post_form.media}}
+</div>
+{% endblock %}

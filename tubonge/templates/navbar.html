@@ -1,0 +1,75 @@
+{% load bootstrap5 %}
+{% load static %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+    .bs-example {
+      margin: 0px;
+
+    }
+
+    .navbar-brand {
+      font-size: 25px;
+      font-family: Petit Formal Script;
+      font-weight: 900;
+
+    }
+    a{
+        
+        font-size: 15px;
+        font-family: Petit Formal Script;
+        font-weight: bold;
+        
+        
+    }
+   
+    
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="bs-example">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background:rgb(16, 53, 100);">
+      <a href="/" class="navbar-brand"><i>TUONGEE</i></a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse" style="word-spacing: 20px;">
+       
+
+        <div class="navbar-nav">
+
+            <a href="/index" class="nav-item nav-link">HOME</a>
+            <a href="/dashboard" class="nav-item nav-link">DASHBOARD</a>
+            <a href="/create_post/new" class="nav-item nav-link">BLOGS</a>
+  
+          <a href="/about" class="nav-item nav-link">ABOUT </a>
+          <a href="#contact" class="nav-item nav-link">CONTACT </a>
+          
+          
+
+        </div>
+
+      </div>
+      <button type="button" class="btn btn-light" style="color:rgb(16, 53, 100) ; border-radius: 30px;"><a href="/accounts/login" style="font-size:20px ;text-decoration: none;color: rgb(16, 53, 100);font-family: Petit Formal Script;">login</a></button>
+    </nav>
+  </div>
+
+  
+</body>
+
+</html>
