@@ -27,14 +27,16 @@ def dashboard(request):
 
 
 def homepage(request):
-    all_posts = Post.objects.all().order_by('id').reverse()
-    context={
-        'all_posts':all_posts
-    }
-    return render(request,'homepage.html',context=context)
+    # all_posts = Post.objects.all().order_by('id').reverse()
+    # context={
+    #     'all_posts':all_posts
+    # }
+    all_posts=Post.objects.all()
+    return render(request,'homepage.html',{"all_posts":all_posts})
+
 # User's Profile
-# @login_required (login_url='/accounts/login/')
-def profile(request, id):
+@login_required (login_url='/accounts/login/')
+def profile(request,id):
     user_profile = Profile.objects.get(id = id)
     user_posts = Post.objects.filter(owner=id)
     context={
@@ -42,8 +44,8 @@ def profile(request, id):
         'user_posts': user_posts
     }
     return render(request, 'profile.html', context=context)
-#Updating User's Profile
-# @login_required (login_url='/accounts/login/')
+# Updating User's Profile
+@login_required (login_url='/accounts/login/')
 def profile_update(request, username):
     user_name = User.objects.get(username=username)
     user_profile = Profile.objects.get(user=user_name.id)
@@ -62,30 +64,33 @@ def profile_update(request, username):
          'user_profile':user_profile
      }
     return render(request, 'profile_update.html', context=context)
-#Creating a New Post
+# Creating a New Post
 @login_required(login_url='/accounts/login/')
-def create_post(request):
-    post_form = PostForm()
+def create_post(request ):
+    user = request.user
+    post_form= PostForm(request.POST, request.FILES)  
     if request.method == "POST":
-        post_form= PostForm(request.POST, request.FILES)
+       
         if post_form.is_valid():
-            user = request.user
-            title = post_form.cleaned_data.get('title')
-            blog = post_form.cleaned_data.get('blog')
-            user = Profile.objects.get(user=user.id)
-            new_post = Post(
+            # user = request.user
+            # title = post_form.cleaned_data.get('title')
+            # blog = post_form.cleaned_data.get('blog')
+            # user = Profile.objects.get(user=user.id)
+            # new_post = Post(
                 
-                title=title,
-                blog=blog,
-            )
-            new_post.save_post()
+            #     title=title,
+            #     blog=blog,
+            # )
+            # post_form.save() 
+            post=post_form.save(commit=False)
+            post.user=request.user
+            post.save
             return redirect('homepage')
-    context={
-        'post_form':post_form
-    }
-    return render(request,'create_post.html',context=context)
+        else:
+            post=PostForm()
+    return render(request,'create_post.html', {'post_form':post_form})
 # Viewing the posts
-# @login_required(login_url='login')
+@login_required(login_url='login')
 def post_details(request,id):
     post = Post.objects.get(id=id)
     user = Profile.objects.get(id=post.owner.id)

@@ -27,17 +27,23 @@ class Profile (models.Model):
         '''
         self.save()
 class Post (models.Model):
-    user = models.ForeignKey (User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=255, blank=True)
-    blog = HTMLField()
+    user = models.ForeignKey (User,on_delete=models.CASCADE)
+    title = models.CharField(max_length=255,blank=False)
+    blog = models.TextField(max_length=255,blank=False)
     posted_on = models.DateTimeField (auto_now_add=True)
     def __str__(self):
         return self.blog
-    def create_post(self):
-        '''
-        A method that creates a post
-        '''
+
+    # def create_post(self):
+    #     '''
+    #     A method that creates a post
+    #     '''
+    #     self.save()
+
+    def save_post(self):
+        '''add new post'''
         self.save()
+
     def delete_post(self):
         '''
         A method that deletes a post

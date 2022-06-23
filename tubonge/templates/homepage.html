@@ -2,6 +2,27 @@
 
 {% block content %}
 {% include 'navbar.html' %}
+<br>
+<br>
+<div class="row">
+   
+   
+    <div class="col-md-3">
+        
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+    
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Anxiety</li>
+      <li class="list-group-item">Depression</li>
+      <li class="list-group-item">Addiction</li>
+      <li class="list-group-item">Domestic Violence</li>
+    </ul>
+  </div>
+    </div>
+    <div class=" col-md-9">  
+
 <div class="display-all-projects d-flex justify-content-center pt-4">
     {% for post in all_posts %}
     <div class="card m-2" style="width: 20rem;">
@@ -19,6 +40,28 @@
     {% endfor %}
 </div>
 <div>
-    <button><a href="/create_post/new"> create a post</a></button>
+    <button class="bt btn-primary" style="align-items:center;"><a href="/create_post/new" style="color: #fff;font: size 15px; ;"> create a post</a></button>
 </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}

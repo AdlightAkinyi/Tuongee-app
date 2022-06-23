@@ -11,8 +11,8 @@ urlpatterns = [
     path('', include('tubonge.urls')),
     path('accounts/', include('registration.backends.simple.urls')),
     path('logout/', views.LogoutView.as_view(next_page='login'), name='logout'),
-    path(r'tubonge/', include('tubonge.urls')),
-    path('', include('tubonge.urls')),
+    # path(r'tubonge/', include('tubonge.urls')),
+    # path('', include('tubonge.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
