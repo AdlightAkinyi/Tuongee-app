@@ -63,7 +63,7 @@ def profile_update(request, username):
      }
     return render(request, 'profile_update.html', context=context)
 #Creating a New Post
-# @login_required(login_url='login')
+@login_required(login_url='/accounts/login/')
 def create_post(request):
     post_form = PostForm()
     if request.method == "POST":
@@ -72,9 +72,9 @@ def create_post(request):
             user = request.user
             title = post_form.cleaned_data.get('title')
             blog = post_form.cleaned_data.get('blog')
-            owner = Profile.objects.get(user=user.id)
+            user = Profile.objects.get(user=user.id)
             new_post = Post(
-                owner=owner,
+                
                 title=title,
                 blog=blog,
             )

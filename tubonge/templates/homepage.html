@@ -3,13 +3,13 @@
 {% block content %}
 {% include 'navbar.html' %}
 <div class="display-all-projects d-flex justify-content-center pt-4">
-    {% for project in all_projects %}
+    {% for post in all_posts %}
     <div class="card m-2" style="width: 20rem;">
         <div class="card-body">
             <h5 class="card-title font-weight-bold">{{post.title}}</h5>
             <p class="card-text">
                 {{post.blog|truncatechars:50}}
-                <a href="{% url 'post_details' post.id %}"> View More </a>
+                
             </p>
             <p class="small">
                 <span class="float-right">Created:{{post.created_on}}</span>
@@ -17,5 +17,8 @@
         </div>
     </div>
     {% endfor %}
+</div>
+<div>
+    <button><a href="/create_post/new"> create a post</a></button>
 </div>
 {% endblock %}
